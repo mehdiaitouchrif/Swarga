@@ -3,6 +3,8 @@ import express from 'express'
 import exphbs from 'express-handlebars'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
+import passport from 'passport'
+import { strategiesConfig } from './config/OAuth.js'
 
 // Env vars
 dotenv.config()
@@ -32,6 +34,11 @@ app.set('view engine', '.hbs')
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'))
 }
+
+// Passport middleweare
+strategiesConfig(passport)
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Routes
 app.use('/', index)
