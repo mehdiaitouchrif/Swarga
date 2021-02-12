@@ -1,0 +1,58 @@
+.btn {
+	display: inline-block;
+	border: none;
+	font-size: 1rem;
+	padding: 0.45rem 0.8rem;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 300ms ease-in;
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 3px 5px rgba($color: $light-gray, $alpha: 0.15);
+	}
+
+	&-sm {
+		padding: 0.3rem 0.6rem;
+		font-size: 0.9rem;
+	}
+
+	&-lg {
+		padding: 0.6rem 1rem;
+		font-size: 1.15rem;
+	}
+
+	&-green {
+		@include set-background($green);
+	}
+
+	&-blue {
+		@include set-background($blue);
+	}
+
+	&-dark {
+		@include set-background($dark-gray);
+	}
+}
+
+.input,
+.textarea {
+	display: inline-block;
+	border: 2px solid $light-gray;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	font-family: inherit;
+	padding: 0.5rem 0.5rem;
+	transition: 200ms ease-in;
+	margin: 0.5rem;
+	box-sizing: inherit;
+	::placeholder {
+		color: $dark-gray;
+	}
+
+	&:focus {
+		outline: none;
+		border: 2px solid $dark-gray;
+		box-shadow: 0 3px 5px rgba($color: $light-gray, $alpha: 0.15);
+	}
+}

@@ -1,0 +1,16 @@
+@function set-text-color($color) {
+	@if (lightness($color) > 60) {
+		@return $black;
+	} @else {
+		@return $white;
+	}
+}
+
+@mixin set-background($color) {
+	background-color: $color;
+	color: set-text-color($color);
+
+	&:hover {
+		background-color: darken($color: $color, $amount: 5%);
+	}
+}
