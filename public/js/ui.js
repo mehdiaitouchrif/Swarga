@@ -22,3 +22,30 @@ window.addEventListener('scroll', () => {
 		navbar.classList.remove('transition')
 	}
 })
+
+// MODAL
+const modal = document.querySelector('#modal')
+const modalBtn = document.querySelector('#open')
+const closeBtn = document.querySelector('#close')
+
+// Events
+modalBtn.addEventListener('click', openModal)
+closeBtn.addEventListener('click', closeModal)
+window.addEventListener('click', outsideClick)
+
+// Open
+function openModal() {
+	modal.style.display = 'block'
+}
+
+// Close
+function closeModal() {
+	modal.style.display = 'none'
+}
+
+// Close If Outside Click
+function outsideClick(e) {
+	if (e.target == modal) {
+		modal.style.display = 'none'
+	}
+}

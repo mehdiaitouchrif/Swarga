@@ -243,3 +243,72 @@
 		}
 	}
 }
+
+// MODAL
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 20;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	&__content {
+		margin: 10% auto;
+		width: 70%;
+		box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+		animation: open 300ms;
+		background-color: $white;
+		padding: 0.5rem 1rem;
+
+		@media (max-width: 768px) {
+			width: 90%;
+		}
+	}
+
+	&__header span {
+		cursor: pointer;
+	}
+
+	&__body {
+		padding: 0 2rem;
+	}
+
+	&__upload {
+		width: 100px;
+		height: 100px;
+		margin: auto;
+
+		img {
+			cursor: pointer;
+			transition: 300ms all ease-in;
+			backface-visibility: hidden;
+
+			&:hover {
+				transform: translateY(-3px);
+			}
+		}
+	}
+
+	&__placeholder {
+		padding: 1rem;
+		border: 3px dashed $light-gray;
+		border-radius: 4px;
+		min-height: 200px;
+		min-width: 100px;
+		margin: auto;
+		margin-bottom: 2rem;
+	}
+
+	@keyframes open {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+}
