@@ -8,6 +8,10 @@
 	display: block !important;
 }
 
+.hidden {
+	display: none;
+}
+
 .w-full {
 	width: 100%;
 }
@@ -61,6 +65,10 @@
 
 	&-center {
 		justify-content: center;
+	}
+
+	&-end {
+		justify-content: flex-end;
 	}
 }
 

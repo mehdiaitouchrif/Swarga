@@ -1,0 +1,29 @@
+<nav class="navbar">
+    <div class="navbar__content">
+        <div class="flex flex-align w-logo ">
+            <div class="logo mr-1">
+                <h1><a href="/">Swarga</a></h1>
+            </div>
+            <form class="navbar__search">
+                <input type="text" class="input rounded-full block w-full" placeholder="Search free high resolution photos">
+                <i class="fas fa-search search-icon"></i>
+            </form>
+        </div>
+        <div class="flex flex-align flex-end">
+            <button class="submit btn btn-sm mx-1"><span class="mr-1">Submit a photo</span><i class="fas fa-upload"></i> </button>
+            <div class="navbar__user">
+                <div class="navbar__avatar">
+                    <img src="/assets/user.jpg" alt="User avatar">
+                </div>
+
+                <div class="navbar__hidden">
+                    <ul>
+                        <li><a href="/auth/profile">Profile</a></li>
+                        <li><a href="/auth/profile">Settings</a></li>
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
