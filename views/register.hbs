@@ -1,1 +1,46 @@
-<h1>Register </h1>
+<div class="register">
+    <div class="register__content">
+        <div class="register__aside">
+            <img src="/assets/register.jpg" alt="">
+            <div class="logo">
+                <h1><a href="/">swarga</a></h1>
+            </div>
+        </div>
+        <div class="register__main">
+            <div class="text-center">
+                <h1 class="text-xlg">Join Swarga</h1>
+                <p class="my-1 text-sm">Already have an account? <a href="/auth/login">Login</a></p>
+            </div>
+            <div class="my-1 text-center">
+                <a href="/auth/google" class="btn btn-blue block w-full">
+                    <i class="fab fa-google"></i> 
+                    Login with Google
+                </a>
+                <div class="text-center mt-1 uppercase text-sm">
+                    or
+                </div>
+            </div>
+            <form>
+                <div class="grid grid-2 gap-1">
+                    <div>
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="input w-full" placeholder="First Name" id="firstName" name="firstName">
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="input w-full" placeholder="Last Name" id="lastName" name="lastName">
+                    </div>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" class="input w-full" placeholder="Enter your email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" class="input w-full" placeholder="Only letters, numbers, and underscores" id="username" name="username">
+                </div>
+                <button class="btn btn-dark w-full mt-1">Join</button>
+            </form>
+        </div>
+    </div>
+</div>

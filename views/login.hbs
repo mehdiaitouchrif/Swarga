@@ -1,3 +1,36 @@
-<h1>Login</h1>
+<div class="login">
+    <div class="login__content">
+        <div class="login__header text-center">
+            <div class="logo text-center">
+                <h1><a href="/">swarga</a></h1>
+            </div>
+            <h2 class="text-lg">Login</h2>
+            <p class="text-sm">Welcome back.</p>
+            <a href="/auth/google" class="btn btn-blue block w-full mt-1">
+                <i class="fab fa-google"></i> 
+                Login with Google
+            </a>
+            <div class="text-center mt-1 uppercase text-sm">
+                or
+            </div>
+        </div>
+        <div class="login__body">
+            <form>
+                <div class="mb-1"> 
+                    <label for="email">Email</label>
+                    <input type="email" class="input w-full" name="email" id="email" placeholder="Enter your email" required  >
+                </div>
+                <div class="mb-1">
+                    <label for="password">Password</label>
+                    <input type="password" class="input w-full" name="password" id="password" placeholder="Enter your password" required  >
+                </div>
+                <button class="btn btn-dark block w-full">Login</button>
+            </form>
+            <div class="my-1">
+                <p class="text-sm">Don't have an account? <a href="/auth/register">Join</a></p>
+            </div>
+        </div>
 
-<a href="/auth/google">Login with Google</a>
+    </div>
+</div>
+

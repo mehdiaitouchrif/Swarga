@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600&display=swap");
 *,
 *::after,
 *::before {
@@ -25,6 +26,7 @@ li {
 
 a {
   text-decoration: none;
+  color: #444;
 }
 
 img {
@@ -60,10 +62,12 @@ img {
 
 .text-lg {
   font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 
 .text-xlg {
   font-size: 2rem;
+  margin-bottom: 5px;
 }
 
 .text-center {
@@ -531,12 +535,12 @@ img {
 }
 
 .btn-dark {
-  background-color: #919191;
+  background-color: #444;
   color: #ffffff;
 }
 
 .btn-dark:hover {
-  background-color: #848484;
+  background-color: #373737;
 }
 
 .input,
@@ -549,7 +553,7 @@ img {
   padding: 0.5rem 0.5rem;
   -webkit-transition: 200ms ease-in;
   transition: 200ms ease-in;
-  margin: 0.5rem;
+  margin: 0.25rem 0;
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
@@ -580,4 +584,94 @@ img {
   border: 2px solid #919191;
   -webkit-box-shadow: 0 3px 5px rgba(238, 238, 238, 0.15);
           box-shadow: 0 3px 5px rgba(238, 238, 238, 0.15);
+}
+
+.logo {
+  font-family: 'El Messiri', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.login {
+  margin: auto;
+  padding: 1rem;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .login {
+    margin-top: 6rem;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.login__content {
+  width: 400px;
+}
+
+.register {
+  height: 100vh;
+}
+
+.register__content {
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+}
+
+.register__aside {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.register__aside::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.register__aside img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.register__aside .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 10;
+  font-size: 1rem;
+}
+
+.register__aside .logo a {
+  color: #ffffff;
+}
+
+.register__main {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
 }

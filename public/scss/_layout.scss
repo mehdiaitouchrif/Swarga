@@ -1,0 +1,78 @@
+// LOGO
+.logo {
+	font-family: 'El Messiri', sans-serif;
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+// LOGIN
+.login {
+	margin: auto;
+	padding: 1rem;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 768px) {
+		margin-top: 6rem;
+		align-items: flex-start;
+	}
+
+	&__content {
+		width: 400px;
+	}
+}
+
+// REGISTER
+.register {
+	height: 100vh;
+
+	&__content {
+		height: 100%;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+	}
+
+	&__aside {
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba($color: #000000, $alpha: 0.4);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.logo {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 1rem;
+			z-index: 10;
+			font-size: 1rem;
+			a {
+				color: $white;
+			}
+		}
+	}
+
+	&__main {
+		max-width: 600px;
+		margin: auto;
+		padding: 2rem;
+	}
+}

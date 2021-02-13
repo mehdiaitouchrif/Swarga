@@ -31,7 +31,7 @@
 	}
 
 	&-dark {
-		@include set-background($dark-gray);
+		@include set-background($dark);
 	}
 }
 
@@ -44,7 +44,7 @@
 	font-family: inherit;
 	padding: 0.5rem 0.5rem;
 	transition: 200ms ease-in;
-	margin: 0.5rem;
+	margin: 0.25rem 0;
 	box-sizing: inherit;
 	::placeholder {
 		color: $dark-gray;
