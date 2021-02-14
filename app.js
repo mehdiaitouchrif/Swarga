@@ -4,8 +4,8 @@ import exphbs from 'express-handlebars'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import passport from 'passport'
+import cookieParser from 'cookie-parser'
 import { strategiesConfig } from './config/OAuth.js'
-
 // Env vars
 dotenv.config()
 
@@ -15,15 +15,18 @@ import connectDB from './config/connectDB.js'
 // Route files
 import index from './routes/index.js'
 import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import { getCurrentUser } from './middleweare/authMiddleweare.js'
 
 // Express
 const app = express()
+app.use(express.json())
+app.use(cookieParser())
 
 // Connect db
 connectDB()
 
 // Set Static Folder
-// Set static folder
 const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -41,8 +44,10 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Routes
+app.get('*', getCurrentUser)
 app.use('/', index)
 app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () =>

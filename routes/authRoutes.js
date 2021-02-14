@@ -1,36 +1,19 @@
 import express from 'express'
-import passport from 'passport'
+import {
+	login_view,
+	join_view,
+	login_with_google,
+	login_google_callback,
+	logout,
+	join,
+	login,
+} from '../controllers/authControllers.js'
 const router = express.Router()
 
-router.get('/login', (req, res) => {
-	res.render('login', {
-		title: 'Swarga | Login',
-	})
-})
-
-router.get('/register', (req, res) => {
-	res.render('register', {
-		title: 'Swarga | Register',
-	})
-})
-
-// Auth w/Google | GET /auth/google
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
-
-// auth cb | GET /auth/google/callback
-router.get(
-	'/google/callback',
-	passport.authenticate('google', { failureRedirect: '/login' }),
-	(req, res) => {
-		// Successful authentication, redirect home.
-		res.redirect('/')
-	}
-)
-
-// Logout | GET /auth/logout
-router.get('/logout', (req, res) => {
-	req.logout()
-	res.redirect('/')
-})
+router.route('/login').get(login_view).post(login)
+router.route('/join').get(join_view).post(join)
+router.get('/google', login_with_google)
+router.get('/google/callback', login_google_callback)
+router.get('/logout', logout)
 
 export default router

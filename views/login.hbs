@@ -15,14 +15,16 @@
             </div>
         </div>
         <div class="login__body">
-            <form>
+            <form id="login">
                 <div class="mb-1"> 
                     <label for="email">Email</label>
-                    <input type="email" class="input w-full" name="email" id="email" placeholder="Enter your email" required  >
+                    <input type="text" class="input w-full" name="email" id="email" placeholder="Enter your email" required  >
+                    <p class="email error"></p>
                 </div>
                 <div class="mb-1">
                     <label for="password">Password</label>
                     <input type="password" class="input w-full" name="password" id="password" placeholder="Enter your password" required  >
+                    <p class="password error"></p>
                 </div>
                 <button class="btn btn-dark block w-full">Login</button>
             </form>

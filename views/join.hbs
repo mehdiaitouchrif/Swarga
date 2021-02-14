@@ -20,24 +20,33 @@
                     or
                 </div>
             </div>
-            <form>
+            <form id="join">
                 <div class="grid grid-2 gap-1">
                     <div>
                         <label for="firstName">First Name</label>
                         <input type="text" class="input w-full" placeholder="First Name" id="firstName" name="firstName">
+                        <p class="firstName error"></p>
                     </div>
                     <div>
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="input w-full" placeholder="Last Name" id="lastName" name="lastName">
+                        <input type="text" class="input w-full" placeholder="Last Name (optional)" id="lastName" name="lastName">
+                        <p class="lastName error"></p>
                     </div>
                 </div>
                 <div>
                     <label for="email">Email</label>
                     <input type="email" class="input w-full" placeholder="Enter your email" id="email" name="email">
+                     <p class="email error"></p>
                 </div>
                 <div>
                     <label for="username">Username</label>
-                    <input type="text" class="input w-full" placeholder="Only letters, numbers, and underscores" id="username" name="username">
+                    <input type="username" class="input w-full" placeholder="Only letters, numbers and underscores" id="username" name="username">
+                    <p class="username error"></p>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" class="input w-full" placeholder="Password here" id="password" name="password">
+                    <p class="password error"></p>
                 </div>
                 <button class="btn btn-dark w-full mt-1">Join</button>
             </form>

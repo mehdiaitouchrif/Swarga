@@ -553,12 +553,57 @@ img {
   background-color: #373737;
 }
 
+.alert {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  -webkit-animation: animate 300ms ease-in;
+          animation: animate 300ms ease-in;
+}
+
+.alert--danger {
+  background-color: #dd4f44;
+  color: #ffffff;
+}
+
+.alert--danger:hover {
+  background-color: #d93b2e;
+}
+
+.alert--success {
+  background-color: #56a966;
+  color: #ffffff;
+}
+
+.alert--success:hover {
+  background-color: #4d985c;
+}
+
+@-webkit-keyframes animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .input,
 .textarea {
   display: inline-block;
   border: 2px solid #eeeeee;
-  border-radius: 4px;
   font-size: 0.9rem;
+  border-radius: 4px;
+  margin: 0.25rem;
   font-family: inherit;
   padding: 0.5rem 0.5rem;
   -webkit-transition: 200ms ease-in;
