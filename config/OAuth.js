@@ -1,7 +1,7 @@
-import { Strategy } from 'passport-google-oauth20'
+import  {Strategy} from 'passport-google-oauth20'
 import GoogleUser from '../models/Google.js'
 
-export const strategiesConfig = (passport) => {
+function strategiesConfig (passport) {
 	passport.use(
 		new Strategy(
 			{
@@ -9,18 +9,15 @@ export const strategiesConfig = (passport) => {
 				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 				callbackURL: '/auth/google/callback',
 			},
-
 			async (accessToken, refreshToken, profile, done) => {
-				console.log(profile)
 				const newUser = {
 					googleId: profile.id,
 					displayName: profile.displayName,
 					firstName: profile.name.givenName,
 					lastName: profile.name.familyName,
-					image: profile.photos[0].value,
+					photo: profile.photos[0].value,
 					email: profile.emails[0].value,
 				}
-
 				try {
 					let user = await GoogleUser.findOne({ googleId: profile.id })
 					if (user) {
@@ -41,6 +38,9 @@ export const strategiesConfig = (passport) => {
 	})
 
 	passport.deserializeUser((id, done) => {
-		User.findById(id, (err, user) => done(err, user))
+		GoogleUser.findById(id, (err, user) => done(err, user))
 	})
 }
+
+
+export default strategiesConfig

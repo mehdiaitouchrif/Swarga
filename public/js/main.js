@@ -9,10 +9,12 @@ console.log(pathname)
 // DOM  & Auth
 if (!pathname.includes('auth')) {
 	ui()
-} else {
+}
+ else {
 	if (pathname.includes('join')) {
 		join()
 	} else {
 		login()
 	}
 }
+

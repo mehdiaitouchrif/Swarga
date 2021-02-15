@@ -13,7 +13,9 @@ const requireAuth = async (req, res, next) => {
 			console.error(error)
 			res.redirect('/auth/login')
 		}
-	} else {
+	} else if(req.isAuthenticated()) {
+		next()
+	}  else {
 		res.redirect('/auth/login')
 	}
 }

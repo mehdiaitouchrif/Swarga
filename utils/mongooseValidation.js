@@ -2,8 +2,8 @@ const mongooseErrorHandler = (err, resource) => {
 	let errors = []
 	if (err.code === 11000) {
 		errors.push({
-			field: 'email',
-			message: `This email is already taken`,
+			field: resource || 'email',
+			message: `This ${resource  || 'email'} is already taken`,
 		})
 	} else {
 		Object.keys(err.errors).map((key) =>

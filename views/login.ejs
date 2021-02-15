@@ -1,3 +1,5 @@
+<%- include('partials/_header') -%>
+
 <div class="login">
     <div class="login__content">
         <div class="login__header text-center">
@@ -18,7 +20,7 @@
             <form id="login">
                 <div class="mb-1"> 
                     <label for="email">Email</label>
-                    <input type="text" class="input w-full" name="email" id="email" placeholder="Enter your email" required  >
+                    <input type="text" class="input w-full" name="email" id="email" placeholder="Enter your email or username" required  >
                     <p class="email error"></p>
                 </div>
                 <div class="mb-1">
@@ -29,10 +31,12 @@
                 <button class="btn btn-dark block w-full">Login</button>
             </form>
             <div class="my-1">
-                <p class="text-sm">Don't have an account? <a href="/auth/register">Join</a></p>
+                <p class="text-sm">Don't have an account? <a href="/auth/join">Join</a></p>
             </div>
         </div>
 
     </div>
 </div>
 
+
+<%- include('partials/_footer') -%>

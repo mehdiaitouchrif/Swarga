@@ -1,4 +1,5 @@
-{{>_navbar}}
+<%- include('partials/_header') -%>
+<%- include('partials/_navbar'), {google: google} -%>
 
 <section class="header">
     <div class="header__content">
@@ -12,3 +13,5 @@
         </form>
     </div>
 </section>
+
+<%- include('partials/_footer') -%>

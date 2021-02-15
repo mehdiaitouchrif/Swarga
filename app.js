@@ -1,11 +1,12 @@
 import path from 'path'
 import express from 'express'
-import exphbs from 'express-handlebars'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
-import { strategiesConfig } from './config/OAuth.js'
+import session from 'express-session';
+import strategiesConfig from './config/OAuth.js'
+
 // Env vars
 dotenv.config()
 
@@ -31,8 +32,7 @@ const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Handlebars
-app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
-app.set('view engine', '.hbs')
+app.set('view engine', 'ejs')
 
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'))
@@ -40,6 +40,13 @@ if (process.env.NODE_ENV === 'development') {
 
 // Passport middleweare
 strategiesConfig(passport)
+
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: false
+}))
+
 app.use(passport.initialize())
 app.use(passport.session())
 

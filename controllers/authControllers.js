@@ -1,4 +1,3 @@
-import passport from 'passport'
 import User from '../models/User.js'
 import sendTokenResponse from '../utils/sendTokenResponse.js'
 import mongooseErrorHandler from '../utils/mongooseValidation.js'
@@ -17,25 +16,17 @@ export const join_view = (req, res) => {
 	})
 }
 
-// Login with Google
-export const login_with_google = passport.authenticate('google', {
-	scope: [
-		'https://www.googleapis.com/auth/userinfo.profile',
-		'https://www.googleapis.com/auth/userinfo.email',
-	],
-})
-
-// Google callback
-export const login_google_callback =
-	(passport.authenticate('google', { failureRedirect: '/login' }),
-	(req, res) => {
-		res.redirect('/')
-	})
-
 // Logout
 export const logout = (req, res) => {
-	res.cookie('token', '', { maxAge: 1 })
-	res.redirect('/')
+	if(req.isAuthenticated()) {
+		req.logout()
+		res.redirect('/')
+
+	} else {
+		res.cookie('token', '', { maxAge: 1 })
+		res.redirect('/')
+
+	}
 }
 
 // Custom authentication
