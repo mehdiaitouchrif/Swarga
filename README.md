@@ -46,9 +46,7 @@ yarn dev
 change NODE_ENV in your .env file to production and run:
 
 ```bash
-# Create frontend production build
-cd frontend
-npm start or yarn start
+npm start
 ```
 
 After your running this command you can see the app running on http://localhost:5000
