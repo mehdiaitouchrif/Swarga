@@ -269,12 +269,14 @@
 		}
 	}
 
-	&__header span {
-		cursor: pointer;
+	&__header {
+		span {
+			cursor: pointer;
+		}
 	}
 
 	&__body {
-		padding: 0 2rem;
+		padding: 0 1rem;
 	}
 
 	&__upload {
@@ -309,6 +311,188 @@
 		}
 		to {
 			opacity: 1;
+		}
+	}
+}
+
+// Photos
+.photos {
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-auto-rows: 200px;
+		gap: 1rem;
+		margin-top: 2rem;
+		padding: 1rem;
+	}
+
+	&__img {
+		position: relative;
+
+		&:nth-child(2) {
+			grid-column: auto / span 2;
+		}
+
+		&:nth-child(3n) {
+			grid-row: auto / span 2;
+		}
+
+		&:hover {
+			cursor: zoom-in;
+		}
+
+		&:hover::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba($color: #000000, $alpha: 0.3);
+		}
+
+		&:hover .photos__hidden {
+			display: flex;
+		}
+	}
+
+	&__hidden {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		display: flex;
+		display: none;
+		justify-content: space-between;
+		padding: 0.5rem;
+		color: $white;
+		cursor: pointer;
+		z-index: 5;
+	}
+
+	&__profile {
+		a {
+			display: flex;
+			align-items: center;
+			color: $white;
+		}
+
+		img {
+			width: 2rem;
+			height: 2rem;
+			border-radius: 10rem;
+			margin-right: 5px;
+		}
+	}
+
+	&__download {
+		padding: 0.25rem 0.5rem;
+		background-color: $light-gray;
+		border-radius: 4px;
+
+		a {
+			color: $dark-gray;
+		}
+	}
+}
+
+// PROFILE
+.profile {
+	padding: 1rem;
+	margin: 2rem 0;
+	&__content {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	&__img {
+		height: 8rem;
+		width: 8rem;
+		margin-right: 2rem;
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+
+	&__info {
+		h2 {
+			font-size: 1.7rem;
+		}
+	}
+
+	&__activity {
+		margin-top: 4rem;
+		nav {
+			display: flex;
+			border-bottom: 1px solid $light-gray;
+
+			p {
+				cursor: pointer;
+				transition: 250ms ease-in all;
+				padding: 0.5rem 0.75rem;
+				&.active {
+					border-bottom: 2px solid $dark-gray;
+				}
+
+				&:hover {
+					color: $dark-gray;
+				}
+			}
+		}
+	}
+
+	&__photos {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-top: 1rem;
+
+		div {
+			position: relative;
+
+			@keyframes animate {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+			&:hover::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background-color: rgba($color: #000000, $alpha: 0.3);
+				animation: animate 300ms ease-in;
+			}
+
+			&:hover i {
+				display: block;
+			}
+
+			i {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 0.5rem;
+				font-size: 1.25rem;
+				color: $white;
+				display: none;
+				z-index: 5;
+				cursor: pointer;
+			}
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
 		}
 	}
 }

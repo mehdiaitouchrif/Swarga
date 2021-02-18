@@ -1,72 +1,141 @@
 <nav class="navbar">
-    <div class="navbar__content">
-        <div class="flex flex-align w-logo ">
-            <div class="logo mr-1">
-                <h1><a href="/">Swarga</a></h1>
-            </div>
-            <form class="navbar__search">
-                <input type="text" class="input rounded-full block w-full" placeholder="Search free high resolution photos">
-                <i class="fas fa-search search-icon"></i>
-            </form>
-        </div>
-        <div class="flex flex-align flex-end">
-            <button id="open" class="submit btn btn-sm mx-1"><span class="mr-1">Submit a photo</span><i class="fas fa-upload"></i> </button>
-            <% if(user || google) { %>
-            <div class="navbar__user">
-                <div class="navbar__avatar">
-                    <img src="/assets/user.jpg" alt="User avatar">
-                </div>
-                    <div class="navbar__hidden">
-                        <ul>
-                            <li><a href="/user"><i class="far fa-user-circle"></i> Profile</a></li>
-                            <li><a href="/user/edit"><i class="fas fa-cog"></i> Settings</a></li>
-                            <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                        </ul>
-                    </div>
-            </div>
-            <% } else { %>
-                <a href="/auth/login" class="btn btn-sm btn-dark" style="margin-right: 5px;"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="/auth/join" class="btn btn-sm btn-green"><i class="fas fa-user-plus"></i> Sign Up</a>
-            <% }  %>
-        </div>
-    </div>
+	<div class="navbar__content">
+		<div class="flex flex-align w-logo">
+			<div class="logo mr-1">
+				<h1><a href="/">Swarga</a></h1>
+			</div>
+			<form class="navbar__search" method="GET" action="/search">
+				<input
+					type="text"
+					id="term"
+					name="term"
+					class="input rounded-full block w-full"
+					placeholder="Search free high resolution photos"
+				/>
+				<i class="fas fa-search search-icon"></i>
+			</form>
+		</div>
+		<div class="flex flex-align flex-end">
+			<button id="open" class="submit btn btn-sm mx-1">
+				<span class="mr-1">Submit a photo</span><i class="fas fa-upload"></i>
+			</button>
+
+			<div class="navbar__user">
+				<% if(user || google) { %>
+				<div class="navbar__avatar">
+					<% if(user) { %>
+					<img src="<%= user.photo %>" alt="<%= user.firstName %>" />
+					<% } else if(google) { %>
+					<img src="<%= google.photo %>" alt="<%= google.firstName %>" />
+					<% } %>
+				</div>
+				<div class="navbar__hidden">
+					<ul>
+						<% if(user) { %>
+						<li>
+							<a href="/user/<%= user._id %>"
+								><i class="far fa-user-circle"></i> Profile</a
+							>
+						</li>
+						<li>
+							<a href="/user/<%= user._id %>"
+								><i class="fas fa-cog"></i> Settings</a
+							>
+						</li>
+						<% } else if(google) { %>
+						<li>
+							<a href="/user/<%= google._id %>"
+								><i class="far fa-user-circle"></i> Profile</a
+							>
+						</li>
+						<li>
+							<a href="/user/<%= google._id %>"
+								><i class="fas fa-cog"></i> Settings</a
+							>
+						</li>
+						<% } %>
+
+						<li>
+							<a href="/auth/logout"
+								><i class="fas fa-sign-out-alt"></i> Logout</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<% } else { %>
+			<a
+				href="/auth/login"
+				class="btn btn-sm btn-dark"
+				style="margin-right: 5px"
+				><i class="fas fa-sign-in-alt"></i> Login</a
+			>
+			<a href="/auth/join" class="btn btn-sm btn-green"
+				><i class="fas fa-user-plus"></i> Sign Up</a
+			>
+			<% } %>
+		</div>
+	</div>
 </nav>
 
-
 <div id="modal" class="modal">
-    <div class="modal__content">
-        <% if(user || google) { %>
-            <div class="modal__header flex flex-align flex-disperse">
-                <p>Submit to Swarga</p>
-                <span id="close" class="text-lg">&times;</span>
-              </div>
-              <div class="modal__body">
-                  <div class="modal__upload">
-                    <label for="image">
-                        <img src="/assets/upload.png" alt="Upload images from computer">
-                    </label>
-                    <input type="file" class="hidden" id="image">
-                  </div>
-                 <div class="modal__placeholder">
-                 </div>
-              </div>        
-        <%  } else { %>   
-            <div class="modal__header flex flex-align flex-disperse ">
-                <div class="logo pl-1 ">
-                    <h1>Swarga</h1>
-                </div>
-                <span id="close" class="text-lg">&times;</span>
-              </div>
-            <div class="text-center py-1 px-1 ">
-                <a href="/auth/google" class="btn btn-blue w-full">
-                    <i class="fab fa-google"></i> 
-                    Login with Google
-                </a>
-                <div class="grid grid-2 my-1 gap-2">
-                    <a href="/auth/login" class="btn btn-green w-full"><i class="fas fa-sign-in-alt"></i> Login</a>
-                    <a href="/auth/join" class="btn btn-green w-full"><i class="fas fa-user-plus"></i> Join</a>
-                </div>
-            </div>                    
-        <% } %>
-    </div>
+	<div class="modal__content">
+		<% if(user || google) { %>
+		<div class="modal__header flex flex-align flex-disperse">
+			<p>Submit to Swarga</p>
+			<span id="close" class="text-lg">&times;</span>
+		</div>
+		<div class="modal__body">
+			<form id="upload-form">
+				<!-- Send User ID - Hidden -->
+				<% if(user) { %>
+				<input type="text" id="user" hidden value="<%= user._id %>" />
+				<% } %> <% if(google) { %>
+				<input type="text" id="google" hidden value="<%= google._id %>" />
+				<% } %>
+				<div class="alert__placeholder"></div>
+				<div class="modal__upload">
+					<label for="image">
+						<img src="/assets/upload.png" alt="Upload images from computer" />
+					</label>
+					<input type="file" class="hidden" id="image" />
+				</div>
+				<div class="modal__placeholder" id="preview"></div>
+				<div class="hidden submit-form">
+					<input
+						type="text"
+						class="input w-full my-1"
+						placeholder="Give your image a title"
+						id="name"
+						name="name"
+					/>
+					<button class="btn btn-green uppercase block w-full mb-2">
+						Submit to Swarga
+					</button>
+				</div>
+			</form>
+		</div>
+		<% } else { %>
+		<div class="modal__header flex flex-align flex-disperse">
+			<div class="logo pl-1">
+				<h1>Swarga</h1>
+			</div>
+			<span id="close" class="text-lg">&times;</span>
+		</div>
+		<div class="text-center py-1 px-1">
+			<a href="/auth/google" class="btn btn-blue w-full">
+				<i class="fab fa-google"></i>
+				Login with Google
+			</a>
+			<div class="grid grid-2 my-1 gap-2">
+				<a href="/auth/login" class="btn btn-green w-full"
+					><i class="fas fa-sign-in-alt"></i> Login</a
+				>
+				<a href="/auth/join" class="btn btn-green w-full"
+					><i class="fas fa-user-plus"></i> Join</a
+				>
+			</div>
+		</div>
+		<% } %>
+	</div>
 </div>

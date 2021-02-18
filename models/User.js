@@ -37,12 +37,17 @@ const userSchema = new mongoose.Schema(
 		},
 		photo: {
 			type: String,
+			default: '/assets/user.jpg',
 		},
 		bio: {
 			type: String,
+			default: `Download free, beautiful high-quality photos curated by `,
+		},
+		location: {
+			type: String,
 		},
 		links: {
-			type: [String],
+			type: [Object],
 		},
 	},
 	{ timestamps: true }

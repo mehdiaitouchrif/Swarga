@@ -1,17 +1,56 @@
-<%- include('partials/_header') -%>
-<%- include('partials/_navbar'), {google: google} -%>
+<%- include('partials/_header') -%> <%- include('partials/_navbar') -%>
 
 <section class="header">
-    <div class="header__content">
-        <div class="logo">
-            <h1>Swarga</h1>
-        </div>
-        <p class="mb-1">Best images for free. Enjoy!</p>
-        <form class="header__search">
-            <input type="text" class="input w-full py-1" placeholder="Search free high resolution photos">
-            <i class="fas fa-search search-icon"></i>
-        </form>
-    </div>
+	<div class="header__content">
+		<div class="logo">
+			<h1>Swarga</h1>
+		</div>
+		<p class="mb-1">Best images for free. Enjoy!</p>
+		<form class="header__search" method="GET" action="/search">
+			<input
+				type="text"
+				id="keyword"
+				name="term"
+				class="input w-full py-1"
+				placeholder="Search free high resolution photos"
+			/>
+			<i class="fas fa-search search-icon"></i>
+		</form>
+	</div>
 </section>
+
+<section id="photos" class="photos px-1">
+	<div class="container">
+		<div class="photos__items">
+			<% photos.forEach(function(ph) { %>
+				<div class="photos__img" data-id="<%= ph._id %>" style="background: url('<%= ph.url %>') center center / cover " >
+					<div class="photos__hidden">
+						<div class="photos__profile">
+							<% if(ph.user) { %>
+								<a href="/user/<%=ph.user._id %>">
+									<img src="<%= ph.user.photo %>"  alt="<%= ph.name %>"/>  
+									<p><%= ph.user.firstName %> <%= ph.user.lastName %></p>
+								</a>
+							<% } else if(ph.google) { %>
+								<a href="/user/<%=ph.google._id %>">
+									<img src="<%= ph.google.photo %>" alt="<%= ph.name %>" /> 
+									<p><%= ph.google.firstName %> <%= ph.google.lastName %></p>
+
+								</a>
+							<% } %>
+					 </p>
+					</div>
+						<div class="photos__download">
+							<a href="<%= ph.url %>" download="true">
+								<i class="fas fa-download"></i>
+							</a>
+						</div>
+					</div>
+				</div>	
+			<% }) %>
+		</div>
+	</div>
+</section>
+
 
 <%- include('partials/_footer') -%>

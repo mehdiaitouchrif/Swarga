@@ -1,5 +1,39 @@
-<%- include('partials/_header') -%>
-<%- include('partials/_navbar') -%>
-<h1>Profile</h1>
+<%- include('partials/_header') -%> <%- include('partials/_navbar') -%>
+<section id="profile" class="profile">
+	<div class="container profile__content">
+		<div class="profile__img">
+			<img src="<%= profile.photo %>" alt="<%= profile.firstName %> photo" />
+		</div>
 
+		<div class="profile__info">
+			<input type="text" hidden id="profileId" value="<%= profile._id %>" />
+			<h2 class="text-xlg"><%= profile.firstName %> <%= profile.lastName %></h2>
+			<p><%= profile.bio %> <strong><%= profile.firstName %></strong></p>
+			<div class="profile__links">
+				<% profile.links.forEach(function(link){ %>
+				<a href="<%= link %>"><%= link %> </a>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+	<div class="container profile__activity">
+		<nav>
+			<p class="active"><i class="fas fa-images"></i> Photos</p>
+			<p><i class="fas fa-heart"></i> Likes</p>
+		</nav>
+
+		<div class="profile__photos">
+			<% photos.forEach(function(photo) { %>
+			<div>
+				<% if(user && user._id === photo.user._id) { %>
+				<i class="fas fa-trash delete" data-id="<%= photo._id %>"</i>
+				<% } %> <% if(google && google._id === photo.google._id) { %>
+				<i class="fas fa-trash delete" data-id="<%= photo._id %>"></i>
+				<% } %>
+				<img src="<%= photo.url %>" alt="<%= photo.name %>" />
+			</div>
+			<% }) %>
+		</div>
+	</div>
+</section>
 <%- include('partials/_footer') -%>

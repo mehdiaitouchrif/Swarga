@@ -1,0 +1,36 @@
+<%- include('partials/_header') -%> <%- include('partials/_navbar') -%>
+<div class="container p-1">
+	<p class="lead mt-2">You searched for:</p>
+	<h2 class="text-lg uppercase mb-1"><%= term %></h2>
+
+	<section id="photos" class="photos px-1">
+		<div class="container">
+			<div class="photos__items">
+				<% photos.forEach(function(ph){ %>
+                    <div class="photos__img" style="background: url('<%= ph.url %>') center center / cover " >
+                        <div class="photos__hidden">
+                            <div class="photos__profile">
+                                <% if(ph.user) { %>
+                                    <img src="<%= ph.user.photo %>" />
+                                    <p><%= ph.user.firstName %> </p>
+                                <% } %>
+                                <% if(ph.google) { %>
+                                    <img src="<%= ph.google.photo %>" />
+                                    <p><%= ph.google.firstName %> </p>
+                                <% } %>
+                         </p>
+                            </div>
+                            <div class="photos__download">
+                                <a href="<%= ph.url %>" download>
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>	
+            
+				<% }); %>
+			</div>
+		</div>
+	</section>
+</div>
+<%- include('partials/_footer') -%>

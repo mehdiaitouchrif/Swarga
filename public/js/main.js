@@ -1,6 +1,7 @@
 import ui from './_ui.js'
 import join from './_join.js'
 import login from './_login.js'
+import { upload, deletePhoto } from './_photos.js'
 
 // Current page
 const pathname = window.location.pathname
@@ -9,8 +10,7 @@ console.log(pathname)
 // DOM  & Auth
 if (!pathname.includes('auth')) {
 	ui()
-}
- else {
+} else {
 	if (pathname.includes('join')) {
 		join()
 	} else {
@@ -18,3 +18,9 @@ if (!pathname.includes('auth')) {
 	}
 }
 
+// PHOTOS
+upload()
+
+if (pathname.includes('/user')) {
+	deletePhoto()
+}

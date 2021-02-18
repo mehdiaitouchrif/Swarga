@@ -4,6 +4,10 @@ import { requireAuth } from '../middleweare/authMiddleweare.js'
 
 const router = express.Router()
 
-router.get('/', requireAuth, profile_view)
-router.get('/edit', requireAuth, edit_view)
+// Include photos resource
+import photoRouter from './photoRoutes.js'
+router.use('/:userId/photos', photoRouter)
+
+router.get('/:id', profile_view)
+router.get('/:id/settings', requireAuth, edit_view)
 export default router

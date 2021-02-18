@@ -1,12 +1,8 @@
 import express from 'express'
+import { searchPhotos } from '../controllers/photoController.js'
+import { home_view } from '../controllers/index.js'
 const router = express.Router()
 
-router.get('/', (req, res) => {
-	console.log(req.user)
-	res.render('home', {
-		title: 'Swarga: Free photos and pictures for everyone',
-		google: req.user
-	})
-})
-
+router.get('/', home_view)
+router.get('/search', searchPhotos)
 export default router

@@ -23,6 +23,19 @@ const googleSchema = new mongoose.Schema(
 		photo: {
 			type: String,
 		},
+		username: {
+			type: String,
+		},
+		bio: {
+			type: String,
+			default: `Download free, beautiful high-quality photos curated by `,
+		},
+		location: {
+			type: String,
+		},
+		links: {
+			type: [String],
+		},
 	},
 	{ timestamps: true }
 )
