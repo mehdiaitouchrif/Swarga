@@ -370,6 +370,16 @@
 		z-index: 5;
 	}
 
+	&__delete {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0.5rem;
+		z-index: 20;
+		color: $white;
+		cursor: pointer;
+	}
+
 	&__profile {
 		a {
 			display: flex;
@@ -402,11 +412,26 @@
 	margin: 2rem 0;
 	&__content {
 		display: grid;
-		grid-template-columns: 1fr 5fr;
+		grid-template-columns: 1fr 3fr;
 		gap: 2rem;
 		align-content: center;
+
+		@media (max-width: 640px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: flex-end;
+			padding: 0 1rem;
+		}
 	}
 	&__img {
+		max-height: 180px;
+		max-width: 180px;
+
+		@media (max-width: 768px) {
+			display: block;
+			max-height: auto;
+		}
 		img {
 			height: 100%;
 			width: 100%;
@@ -501,6 +526,10 @@
 		grid-template-columns: 2fr 7fr;
 		gap: 2rem;
 		padding: 1rem 2rem;
+
+		@media (max-width: 768px) {
+			display: block;
+		}
 	}
 
 	&__form,
@@ -515,6 +544,13 @@
 		align-self: center;
 		justify-content: center;
 		font-size: 0.9rem;
+		max-width: 200px;
+
+		@media (max-width: 768px) {
+			display: block;
+			margin: auto;
+		}
+
 		img {
 			border-radius: 50%;
 		}

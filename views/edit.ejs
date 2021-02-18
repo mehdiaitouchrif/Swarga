@@ -69,7 +69,13 @@
 				>
 			</div>
 			<input type="text" hidden value="<%= user._id %>" name="userId" />
-			<input type="text" name="photo" hidden id="photo" />
+			<input
+				type="text"
+				name="photo"
+				value="<%= user.photo %>"
+				hidden
+				id="photo"
+			/>
 			<button class="btn btn-green uppercase w-full">Update Profile</button>
 		</form>
 		<% } %> <% if(google) { %>
@@ -137,7 +143,13 @@
 				>
 			</div>
 			<input type="text" hidden value="<%= google._id %>" name="userId" />
-			<input type="text" name="photo" hidden id="photo" />
+			<input
+				type="text"
+				value="<%= google.photo %>"
+				name="photo"
+				hidden
+				id="photo"
+			/>
 			<button class="btn btn-green uppercase w-full">Update Profile</button>
 		</form>
 

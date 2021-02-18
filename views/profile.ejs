@@ -29,10 +29,53 @@
 	<div class="container profile__activity">
 		<nav>
 			<p class="active"><i class="fas fa-images"></i> Photos</p>
-			<p><i class="fas fa-heart"></i> Likes</p>
 		</nav>
 
-		<div class="profile__photos">
+		<section id="photos" class="photos px-1">
+			<div class="container">
+				<div class="photos__items">
+					<% photos.forEach(function(ph) { %>
+						<div class="photos__img" data-id="<%= ph._id %>" style="background: url('<%= ph.url %>') center center / cover " >
+							<div class="photos__delete">
+								<% if(user) { %> <% if(ph.user) { %>
+									<i class="fas fa-trash delete" data-id="<%ph._id %>"></i>
+									<% } %> <% } %> <% if(google && google.googleId) { %> <%
+									if(ph.google) { %>
+									<i class="fas fa-trash delete" data-id="<%= ph._id %>"></i>
+									<% } %> <% } %>
+							</div>
+							<div class="photos__hidden">
+					
+								<div class="photos__profile">	
+									<% if(ph.user) { %>
+										<a href="/user/<%=ph.user._id %>">
+											<img src="<%= ph.user.photo %>"  alt="<%= ph.name %>"/>  
+											<p><%= ph.user.firstName %> <%= ph.user.lastName %></p>
+										</a>
+									<% } else if(ph.google) { %>
+										<a href="/user/<%=ph.google._id %>">
+											<img src="<%= ph.google.photo %>" alt="<%= ph.name %>" /> 
+											<p><%= ph.google.firstName %> <%= ph.google.lastName %></p>
+		
+										</a>
+									<% } %>
+							 </p>
+							</div>
+								<div class="photos__download">
+									<a href="<%= ph.url %>" download="true">
+										<i class="fas fa-download"></i>
+									</a>
+								</div>
+							</div>
+						</div>	
+					<% }) %>
+				</div>
+			</div>
+		</section>
+		
+
+
+		<!-- <div class="profile__photos">
 			<% photos.forEach(function(photo) { %>
 			<div>
 				<% if(user) { %> <% if(photo.user) { %>
@@ -45,7 +88,7 @@
 				<img src="<%= photo.url %>" alt="<%= photo.name %>" />
 			</div>
 			<% }) %>
-		</div>
+		</div> -->
 	</div>
 </section>
 <%- include('partials/_footer') -%>

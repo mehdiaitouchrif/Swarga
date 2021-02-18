@@ -98,17 +98,19 @@ const upload = () => {
 
 // Delete photo
 function deletePhoto() {
-	const deleteRef = document.querySelector('.delete')
-	if (deleteRef) {
-		deleteRef.addEventListener('click', async (e) => {
-			const id = e.target.getAttribute('data-id')
-			const res = await fetch(`/photos/${id}`, {
-				method: 'DELETE',
+	const deleteRefs = document.querySelectorAll('.delete')
+	if (deleteRefs) {
+		deleteRefs.forEach((ref) => {
+			ref.addEventListener('click', async (e) => {
+				const id = e.target.getAttribute('data-id')
+				const res = await fetch(`/photos/${id}`, {
+					method: 'DELETE',
+				})
+				const { success } = await res.json()
+				if (success) {
+					window.location.reload()
+				}
 			})
-			const { success } = await res.json()
-			if (success) {
-				window.location.reload()
-			}
 		})
 	}
 }
