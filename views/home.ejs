@@ -27,7 +27,7 @@
 					<div class="photos__hidden">
 						<div class="photos__profile">
 							<% if(ph.user) { %>
-								<a href="/user/<%=ph.user._id %>">
+								<a  href="/user/<%=ph.user._id %>">
 									<img src="<%= ph.user.photo %>"  alt="<%= ph.name %>"/>  
 									<p><%= ph.user.firstName %> <%= ph.user.lastName %></p>
 								</a>
@@ -41,7 +41,7 @@
 					 </p>
 					</div>
 						<div class="photos__download">
-							<a href="<%= ph.url %>" download="true">
+							<a target="_blank" href="<%= ph.url %>" download="true">
 								<i class="fas fa-download"></i>
 							</a>
 						</div>

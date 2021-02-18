@@ -11,17 +11,21 @@
                         <div class="photos__hidden">
                             <div class="photos__profile">
                                 <% if(ph.user) { %>
-                                    <img src="<%= ph.user.photo %>" />
-                                    <p><%= ph.user.firstName %> </p>
-                                <% } %>
-                                <% if(ph.google) { %>
-                                    <img src="<%= ph.google.photo %>" />
-                                    <p><%= ph.google.firstName %> </p>
+                                    <a href="/user/<%=ph.user._id %>">
+                                        <img src="<%= ph.user.photo %>"  alt="<%= ph.name %>"/>  
+                                        <p><%= ph.user.firstName %> <%= ph.user.lastName %></p>
+                                    </a>
+                                <% } else if(ph.google) { %>
+                                    <a href="/user/<%=ph.google._id %>">
+                                        <img src="<%= ph.google.photo %>" alt="<%= ph.name %>" /> 
+                                        <p><%= ph.google.firstName %> <%= ph.google.lastName %></p>
+    
+                                    </a>
                                 <% } %>
                          </p>
                             </div>
                             <div class="photos__download">
-                                <a href="<%= ph.url %>" download>
+                                <a target="_blank" href="<%= ph.url %>" download>
                                     <i class="fas fa-download"></i>
                                 </a>
                             </div>
