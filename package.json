@@ -8,7 +8,8 @@
 	"type": "module",
 	"scripts": {
 		"start": "node app",
-		"dev": "nodemon app"
+		"dev": "nodemon app",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
 	},
 	"dependencies": {
 		"aws-sdk": "^2.843.0",
