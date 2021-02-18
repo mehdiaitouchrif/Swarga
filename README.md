@@ -4,6 +4,8 @@
 
 This is a web application dedicated to sharing stock photography and images.
 
+![preview](https://user-images.githubusercontent.com/74450685/108373544-4ea5fe80-7200-11eb-8eee-2a03decd8a32.jpg)
+
 # Quick Start 🚀
 
 ### Create .env file in the root directory and fill it with your own data:
