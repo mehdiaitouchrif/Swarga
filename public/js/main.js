@@ -1,6 +1,7 @@
 import ui from './_ui.js'
 import join from './_join.js'
 import login from './_login.js'
+import { profilePic, userUpdate } from './_user.js'
 import { upload, deletePhoto } from './_photos.js'
 
 // Current page
@@ -24,3 +25,7 @@ upload()
 if (pathname.includes('/user')) {
 	deletePhoto()
 }
+
+// User profile settings
+profilePic()
+userUpdate()

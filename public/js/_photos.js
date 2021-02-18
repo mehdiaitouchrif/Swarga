@@ -99,16 +99,18 @@ const upload = () => {
 // Delete photo
 function deletePhoto() {
 	const deleteRef = document.querySelector('.delete')
-	deleteRef.addEventListener('click', async (e) => {
-		const id = e.target.getAttribute('data-id')
-		const res = await fetch(`/photos/${id}`, {
-			method: 'DELETE',
+	if (deleteRef) {
+		deleteRef.addEventListener('click', async (e) => {
+			const id = e.target.getAttribute('data-id')
+			const res = await fetch(`/photos/${id}`, {
+				method: 'DELETE',
+			})
+			const { success } = await res.json()
+			if (success) {
+				window.location.reload()
+			}
 		})
-		const { success } = await res.json()
-		if (success) {
-			window.location.reload()
-		}
-	})
+	}
 }
 
 export { upload, deletePhoto }

@@ -28,7 +28,6 @@ const googleSchema = new mongoose.Schema(
 		},
 		bio: {
 			type: String,
-			default: `Download free, beautiful high-quality photos curated by `,
 		},
 		location: {
 			type: String,

@@ -81,3 +81,17 @@
 		box-shadow: 0 3px 5px rgba($color: $light-gray, $alpha: 0.15);
 	}
 }
+
+// Upload file input
+input[type='file'] {
+	display: none;
+}
+.file-upload {
+	border: 1px solid $light-gray;
+	display: inline-block;
+	padding: 0.7rem 1rem;
+	margin: 1rem 0;
+	background-color: $white;
+	border-radius: 4px;
+	cursor: pointer;
+}

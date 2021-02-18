@@ -7,8 +7,18 @@
 
 		<div class="profile__info">
 			<input type="text" hidden id="profileId" value="<%= profile._id %>" />
-			<h2 class="text-xlg"><%= profile.firstName %> <%= profile.lastName %></h2>
-			<p><%= profile.bio %> <strong><%= profile.firstName %></strong></p>
+			<div class="flex flex-align">
+				<h2 class="text-xlg">
+					<%= profile.firstName %> <%= profile.lastName %>
+				</h2>
+			</div>
+			<p><%= profile.bio || 'Download high quality images from this user' %></p>
+			<% if(profile.bio === '') { %>
+			<p>
+				Download high quality pictures from
+				<strong><%= profile.firstName %> </strong>
+			</p>
+			<% } %>
 			<div class="profile__links">
 				<% profile.links.forEach(function(link){ %>
 				<a href="<%= link %>"><%= link %> </a>
@@ -25,11 +35,13 @@
 		<div class="profile__photos">
 			<% photos.forEach(function(photo) { %>
 			<div>
-				<% if(user && user._id === photo.user._id) { %>
-				<i class="fas fa-trash delete" data-id="<%= photo._id %>"</i>
-				<% } %> <% if(google && google._id === photo.google._id) { %>
-				<i class="fas fa-trash delete" data-id="<%= photo._id %>"></i>
-				<% } %>
+				<% if(user) { %> <% if(photo.user) { %>
+				<i class="fas fa-trash delete"></i>
+				<% } %> <% } %> <% if(google && google.googleId) { %> <%
+				if(photo.google) { %>
+				<i class="fas fa-trash delete"></i>
+				<% } %> <% } %>
+
 				<img src="<%= photo.url %>" alt="<%= photo.name %>" />
 			</div>
 			<% }) %>
