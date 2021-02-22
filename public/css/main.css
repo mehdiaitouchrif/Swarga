@@ -872,27 +872,50 @@ input[type='file'] {
   width: 100%;
 }
 
+@media (max-width: 900px) {
+  .navbar .navbar__search {
+    display: none;
+  }
+  .navbar__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
 @media (max-width: 768px) {
+  .navbar .submit span {
+    display: none;
+  }
+  .navbar__content {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
   .navbar .logo {
+    font-size: 0.9rem;
+  }
+  .navbar a i {
     display: none;
   }
 }
 
 @media (max-width: 500px) {
-  .navbar__content {
-    -ms-grid-columns: 3fr 1fr;
-        grid-template-columns: 3fr 1fr;
-  }
   .navbar .navbar__search .input {
     font-size: 0.8rem;
-  }
-  .navbar .submit span {
-    display: none;
   }
 }
 
 .header {
   height: 85vh;
+  max-height: 100%;
+  overflow: hidden;
   background: url("/assets/hero.jpg") center center/cover;
   position: relative;
 }
@@ -927,6 +950,12 @@ input[type='file'] {
 .header__search .input {
   background-color: #eeeeee;
   padding-left: 2rem;
+}
+
+@media (max-width: 500px) {
+  .header__search .input {
+    width: 90%;
+  }
 }
 
 .header__search .search-icon {
